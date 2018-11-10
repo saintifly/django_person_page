@@ -7,7 +7,7 @@ from django.contrib import admin
 from myapp.models import Goods
 
 admin.site.register(Goods)
-
+# admin.site.site_url = 'www.baidu.com'
 
 # Register your models here.
 # from blog.models import Blog
