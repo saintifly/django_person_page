@@ -7,10 +7,10 @@ from django.db import models
 
 class Books(models.Model):
     bookname = models.CharField('bookname',max_length=200,null=False)
-    bookstarttime = models.CharField('bookstarttime',max_length=30)
-    bookinfo = models.CharField('bookinfo', max_length=200)
-    booktype = models.CharField('booktype',max_length=30)
-    bookendtime = models.CharField('bookendtime', max_length=30)
+    bookstarttime = models.CharField('bookstarttime',max_length=30,blank=True,null=True)
+    bookinfo = models.CharField('bookinfo', max_length=200,blank=True,null=True)
+    booktype = models.CharField('booktype',max_length=30,blank=True,null=True)
+    bookendtime = models.CharField('bookendtime', max_length=30,blank=True,null=True)
     bookremark = models.CharField('bookremark',max_length=1000,blank=True,null=True)
     class Meta:
         verbose_name = "书单"

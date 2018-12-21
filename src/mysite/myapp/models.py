@@ -32,12 +32,12 @@ from django.db import models
  
 class Goods(models.Model):
     title = models.CharField('商品名称',max_length=30,null=False)
-    price = models.DecimalField('商品价格',max_digits=8,decimal_places=2)
-    desc = models.CharField('描述', max_length=200)
-    unit = models.CharField('单位',max_length=30)
-    picture = models.ImageField('商品图片',upload_to='static/images/goods',default='normal.png')
-    detail = models.CharField('商品详情',max_length=1000,default='商品详情')
-    isdelete = models.BooleanField('删除',default=False)
+    price = models.DecimalField('商品价格',max_digits=8,decimal_places=2,blank=True,null=True)
+    desc = models.CharField('描述', max_length=200,blank=True,null=True)
+    unit = models.CharField('单位',max_length=30,blank=True,null=True)
+    picture = models.ImageField('商品图片',upload_to='static/images/goods',default='normal.png',blank=True,null=True)
+    detail = models.CharField('商品详情',max_length=1000,default='商品详情',blank=True,null=True)
+    isdelete = models.BooleanField('删除',default=False,blank=True,null=True)
 #     type = models.ForeignKey(GoodsType,on_delete=models.CASCADE)
  
 #     def __str__(self):
