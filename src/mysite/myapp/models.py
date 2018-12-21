@@ -37,7 +37,7 @@ class Goods(models.Model):
     unit = models.CharField('单位',max_length=30,blank=True,null=True)
     picture = models.ImageField('商品图片',upload_to='static/images/goods',default='normal.png',blank=True,null=True)
     detail = models.CharField('商品详情',max_length=1000,default='商品详情',blank=True,null=True)
-    isdelete = models.BooleanField('删除',default=False,blank=True,null=True)
+    isdelete = models.BooleanField('删除',default=False)
 #     type = models.ForeignKey(GoodsType,on_delete=models.CASCADE)
  
 #     def __str__(self):
