@@ -38,6 +38,13 @@ class Goods(models.Model):
     picture = models.ImageField('商品图片',upload_to='static/images/goods',default='normal.png',blank=True,null=True)
     detail = models.CharField('商品详情',max_length=1000,default='商品详情',blank=True,null=True)
     isdelete = models.BooleanField('删除',default=False)
+    class Meta:
+        verbose_name = "商品"
+        verbose_name_plural = "我的商品"
+        app_label = 'myapp'
+    def __unicode__(self):
+        return self.title	
+	
 #     type = models.ForeignKey(GoodsType,on_delete=models.CASCADE)
  
 #     def __str__(self):

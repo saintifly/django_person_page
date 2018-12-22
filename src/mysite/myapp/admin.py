@@ -6,7 +6,22 @@ from django.contrib import admin
 
 from myapp.models import Goods
 
-admin.site.register(Goods)
+from django.utils.safestring import mark_safe 
+
+class AuthorAdmin(admin.ModelAdmin):
+
+
+    list_display = ('title', 'price', 'desc','unit','picture','detail',)
+    search_fields = ('title', 'desc')
+   # list_editable=('sitename',)
+    
+    list_filter = ('title',)
+    #fields = ('sitename', 'desc')
+
+admin.site.register(Goods,AuthorAdmin)
+
+
+
 # admin.site.site_url = 'www.baidu.com'
 
 # Register your models here.
@@ -34,9 +49,10 @@ admin.site.register(Goods)
 #     search_fields =('server', 'net', 'mark') #搜索字段
 #     date_hierarchy = 'go_time'    # 详细时间分层筛选　
     
-    
-# class MyAdminSite(admin.AdminSite):
-#     site_header = '好医生运维资源管理系统'  # 此处设置页面显示标题
-#     site_title = '好医生运维'  # 此处设置页面头部标题
-#  
-# admin_site = MyAdminSite(name='management')
+#class MyAdminSite(admin.AdminSite):
+#    site_header = '个人网站管理系统'  # 此处设置页面显示标题
+#    site_title = '个人网站'  # 此处设置页面头部标题
+  
+#admin_site = MyAdminSite(name='management')
+admin.site.site_header = '个人网站管理系统'
+admin.site.site_title = '个人网站'
