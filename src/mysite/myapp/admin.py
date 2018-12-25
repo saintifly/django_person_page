@@ -8,11 +8,21 @@ from myapp.models import Goods
 
 from django.utils.safestring import mark_safe 
 
+
+
 class AuthorAdmin(admin.ModelAdmin):
-
-
-    list_display = ('title', 'price', 'desc','unit','picture','detail',)
+    def Picture(self,obj):
+		try:
+			img = mark_safe('<img src="%s" width="50px" />' % (obj.picture,))
+		except Exception as e:
+			img = ''
+		return img
+    Picture.short_description = 'Thumb'
+    Picture.allow_tags = True
+	
+    list_display = ('title', 'price', 'desc','unit','Picture','detail',)
     search_fields = ('title', 'desc')
+    readonly_fields = ('Picture',)
    # list_editable=('sitename',)
     
     list_filter = ('title',)

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for mysite project.
 
@@ -36,6 +37,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+	'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -125,11 +127,32 @@ TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
 SITE_ID = 1
+
+DATETIME_FORMAT = 'Y-m-d H:i:s'
+DATE_FORMAT = 'Y-m-d'
+
+SUIT_CONFIG = { # suit页面配置
+  'ADMIN_NAME': '个人网站管理系统', # 登录界面提示
+  'LIST_PER_PAGE': 20, # 表中显示行数
+  'MENU': ({'label': u'用户管理', 'app': 'auth',
+       'icon': 'icon-lock', # 显示左边菜单的图标
+       'models': ('auth.User', 'auth.Group')}, # 每一个字典表示左侧菜单的一栏
+	   #    'myapp',
+	   #'mybook',
+       {'label': u'计划', 'app': 'myapp',
+       'models': ('myapp.Goods',)},
+	   {'label': u'经验', 'app': 'mybook',
+       'models': ('mybook.Books',)},
+	   {'label': u'未来', 'app': 'mywebsite',
+       'models': ('mywebsite.Mywebsite',)},
+       ),
+  # label表示name，app表示上边的install的app，models表示用了哪些models
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
